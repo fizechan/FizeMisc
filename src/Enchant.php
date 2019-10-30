@@ -4,8 +4,8 @@
 namespace fize\crypt;
 
 /**
- * Enchant类
- * @todo 待测试
+ * Enchant拼写检查类
+ * @deprecated 实际使用情景并不多见
  * @package fize\crypt
  */
 class Enchant
