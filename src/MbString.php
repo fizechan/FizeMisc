@@ -1,11 +1,12 @@
 <?php
+/** @noinspection PhpLanguageLevelInspection */
 /** @noinspection PhpComposerExtensionStubsInspection */
 
-namespace fize\crypt;
+namespace fize\misc;
 
 /**
  * MbString扩展
- * @package fize\crypt
+ * @package fize\misc
  */
 class MbString
 {
@@ -23,9 +24,9 @@ class MbString
 
     /**
      * 获取特定字符
-     * @param $cp
-     * @param $encoding
-     * @return string 失败时返回false
+     * @param int $cp
+     * @param string $encoding 编码
+     * @return string
      */
     public static function chr($cp, $encoding)
     {
@@ -53,7 +54,10 @@ class MbString
      */
     public static function convertEncoding($str, $to_encoding, $from_encoding = null)
     {
-        return mb_convert_encoding($str, $to_encoding, $from_encoding);
+        if($from_encoding) {
+            return mb_convert_encoding($str, $to_encoding, $from_encoding);
+        }
+        return mb_convert_encoding($str, $to_encoding);
     }
 
     /**
@@ -63,17 +67,21 @@ class MbString
      * @param string $encoding 原编码，如果没有提供 from_encoding，则会使用内部（internal）编码。
      * @return string
      */
-    public static function convertKana($str, $option = null, $encoding = null)
+    public static function convertKana($str, $option = 'KV', $encoding = null)
     {
-        return mb_convert_kana($str, $option, $encoding);
+        if($encoding) {
+            return mb_convert_kana($str, $option, $encoding);
+        }
+        return mb_convert_kana($str, $option);
     }
 
     /**
      * 转换一个或多个变量的字符编码，假设所有的参数都具有同样的编码。
+     * @since PHP5.6
      * @param string $to_encoding 指定编码
      * @param string $from_encoding 原编码
      * @param mixed ...$vars 要转换的变量的引用。参数可以接受 String、Array 和 Object 的类型。
-     * @return string 失败返回false
+     * @return string 转换前的字符编码
      */
     public static function convertVariables($to_encoding, $from_encoding, &...$vars)
     {
@@ -95,7 +103,7 @@ class MbString
      * @param string $str 要解码的字符串
      * @param array $convmap 指定了要转换的代码区域。
      * @param string $encoding 字符编码。如果省略，则使用内部字符编码。
-     * @return string 失败返回false
+     * @return string
      */
     public static function decodeNumericentity($str, array $convmap, $encoding = null)
     {
@@ -105,9 +113,9 @@ class MbString
     /**
      * 检测字符的编码
      * @param string $str 待检查的字符串
-     * @param mixed $encoding_list 字符编码列表。编码顺序可以由数组或者逗号分隔的列表字符串指定
+     * @param array|string $encoding_list 字符编码列表。编码顺序可以由数组或者逗号分隔的列表字符串指定
      * @param bool $strict 是否严格地检测编码。默认是 FALSE。
-     * @return string 失败返回false
+     * @return string
      */
     public static function detectEncoding($str, $encoding_list = null, $strict = false)
     {
@@ -116,11 +124,14 @@ class MbString
 
     /**
      * 设置/获取 字符编码的检测顺序
-     * @param mixed $encoding_list 一个 array 或者逗号分隔的字符编码列表
-     * @return mixed 设置编码检测顺序时候，成功时返回 TRUE，识别时候返回 FALSE。在获取编码检测顺序的时候，会返回排序过的编码数组。
+     * @param array|string $encoding_list 一个 array 或者逗号分隔的字符编码列表
+     * @return bool|array 设置编码检测顺序时候，成功时返回 TRUE，识别时候返回 FALSE。在获取编码检测顺序的时候，会返回排序过的编码数组。
      */
     public static function detectOrder($encoding_list = null)
     {
+        if(is_null($encoding_list)) {
+            return mb_detect_order();
+        }
         return mb_detect_order($encoding_list);
     }
 
@@ -144,7 +155,7 @@ class MbString
      * @param array $convmap 指定要转换的代码区域。
      * @param string $encoding 指定编码
      * @param bool $is_hex 是否为16进制字符串
-     * @return string 失败时返回false
+     * @return string
      */
     public static function encodeNumericentity($str, array $convmap, $encoding = null, $is_hex = false)
     {
@@ -154,7 +165,7 @@ class MbString
     /**
      * 获取已知编码类型的别名
      * @param string $encoding 编码
-     * @return string[] 失败时返回false
+     * @return string[]
      */
     public static function encodingAliases($encoding)
     {
@@ -179,7 +190,7 @@ class MbString
      * @param callable $callback 回调函数
      * @param string $string 要匹配的字符串
      * @param string $option 匹配的选项
-     * @return string 失败时返回false
+     * @return string
      */
     public static function eregReplaceCallback($pattern, callable $callback, $string, $option = "msr")
     {
@@ -192,7 +203,7 @@ class MbString
      * @param string $replacement 要替换成的字符串
      * @param string $string 要匹配的字符串
      * @param string $option 匹配的选项
-     * @return string 失败时返回false
+     * @return string
      */
     public static function eregReplace($pattern, $replacement, $string, $option = "msr")
     {
@@ -210,7 +221,7 @@ class MbString
 
     /**
      * 从最后一个多字节正则表达式匹配中检索结果
-     * @return string[] 失败时返回false
+     * @return string[]
      */
     public static function eregSearchGetregs()
     {
@@ -233,7 +244,7 @@ class MbString
      * 返回预定义多字节字符串的多字节正则表达式的匹配部分的位置和长度
      * @param string $pattern 正则表达式
      * @param string $option 匹配的选项
-     * @return int[] 失败时返回false
+     * @return int[]
      */
     public static function eregSearchPos($pattern = null, $option = null)
     {
@@ -244,7 +255,7 @@ class MbString
      * 返回多字节正则表达式的匹配部分
      * @param string $pattern 正则表达式
      * @param string $option 匹配的选项
-     * @return string[] 失败时返回false
+     * @return string[]
      */
     public static function eregSearchRegs($pattern = null, $option = null)
     {
@@ -290,7 +301,7 @@ class MbString
      * @param string $replace 要替换成的字符串
      * @param string $string 要匹配的字符串
      * @param string $option 匹配的选项
-     * @return string 失败时返回false
+     * @return string
      */
     public static function eregiReplace($pattern, $replace, $string, $option = "msr")
     {
@@ -372,7 +383,7 @@ class MbString
      * 获取字符的代码点
      * @param string $str 字符串
      * @param string $encoding 编码
-     * @return int 失败时返回false
+     * @return int
      */
     public static function ord($str, $encoding)
     {
@@ -414,7 +425,7 @@ class MbString
     /**
      * 设置/获取多字节正则表达式的字符编码
      * @param string $encoding 编码
-     * @return mixed 设置时返回true或false，获取时返回string
+     * @return bool|string 设置时返回true或false，获取时返回string
      */
     public static function regexEncoding($encoding = null)
     {
@@ -435,7 +446,7 @@ class MbString
      * @notice 本函数还未编写文档，仅有参数列表
      * @param string $str 字符串
      * @param string $encoding 编码
-     * @return string 失败时返回false
+     * @return string
      */
     public static function scrub($str, $encoding)
     {
@@ -501,7 +512,7 @@ class MbString
      * @param string $needle 要查找这个字符串
      * @param int $offset 开始搜索的位置。如果是负数，就从字符串的尾部开始统计。
      * @param string $encoding 使用的字符编码名称。如果省略了它，将使用内部字符编码。
-     * @return int 没找到返回false
+     * @return int|false 没找到返回false
      */
     public static function stripos($haystack, $needle, $offset = 0, $encoding = null)
     {
@@ -514,7 +525,7 @@ class MbString
      * @param string $needle 要查找这个字符串
      * @param bool $before_needle 决定这个函数返回 haystack 的哪一部分
      * @param string $encoding 使用的字符编码名称。如果省略了它，将使用内部字符编码。
-     * @return string 没找到时返回false
+     * @return string|false 没找到时返回false
      */
     public static function stristr($haystack, $needle, $before_needle = false, $encoding = null)
     {
@@ -525,7 +536,7 @@ class MbString
      * 获取字符串的长度
      * @param string $str 字符串
      * @param string $encoding 编码
-     * @return int 如果给定的 encoding 无效则返回 FALSE
+     * @return int|false 如果给定的 encoding 无效则返回 FALSE
      */
     public static function strlen($str, $encoding = null)
     {
@@ -538,7 +549,7 @@ class MbString
      * @param string $needle 要查找这个字符串
      * @param int $offset 搜索位置的偏移。如果没有提供该参数，将会使用 0。负数的 offset 会从字符串尾部开始统计。
      * @param string $encoding 字符编码。如果省略，则使用内部字符编码。
-     * @return int 没找到时返回false
+     * @return int|false 没找到时返回false
      */
     public static function strpos($haystack, $needle, $offset = 0, $encoding = null)
     {
@@ -551,7 +562,7 @@ class MbString
      * @param string $needle 要查找这个字符串
      * @param bool $before_needle 决定这个函数返回 haystack 的哪一部分
      * @param string $encoding 使用的字符编码名称。如果省略了它，将使用内部字符编码。
-     * @return string 没找到时返回false
+     * @return string|false 没找到时返回false
      */
     public static function strrchr($haystack, $needle, $before_needle = false, $encoding = null)
     {
@@ -564,7 +575,7 @@ class MbString
      * @param string $needle 要查找这个字符串
      * @param bool $before_needle 决定这个函数返回 haystack 的哪一部分
      * @param string $encoding 使用的字符编码名称。如果省略了它，将使用内部字符编码。
-     * @return string 没找到时返回false
+     * @return string|false 没找到时返回false
      */
     public static function strrichr($haystack, $needle, $before_needle = false, $encoding = null)
     {
@@ -577,7 +588,7 @@ class MbString
      * @param string $needle 要查找这个字符串
      * @param int $offset 开始搜索的位置
      * @param string $encoding 使用的字符编码名称。如果省略了它，将使用内部字符编码。
-     * @return int 没找到时返回false
+     * @return int|false 没找到时返回false
      */
     public static function strripos($haystack, $needle, $offset = 0, $encoding = null)
     {
@@ -590,7 +601,7 @@ class MbString
      * @param string $needle 要查找这个字符串
      * @param int $offset 开始搜索的位置
      * @param string $encoding 使用的字符编码名称。如果省略了它，将使用内部字符编码。
-     * @return int 没找到时返回false
+     * @return int|false 没找到时返回false
      */
     public static function strrpos($haystack, $needle, $offset = 0, $encoding = null)
     {
@@ -603,7 +614,7 @@ class MbString
      * @param string $needle 要查找这个字符串
      * @param bool $before_needle 决定这个函数返回 haystack 的哪一部分
      * @param string $encoding 使用的字符编码名称。如果省略了它，将使用内部字符编码。
-     * @return string 没找到时返回false
+     * @return string|false 没找到时返回false
      */
     public static function strstr($haystack, $needle, $before_needle = false, $encoding = null)
     {

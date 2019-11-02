@@ -17,7 +17,8 @@
     "suggest": {
         "php": ">=7.0.0",
         "ext-bz2": "*",
-        "ext-iconv": "*"
+        "ext-iconv": "*",
+        "ext-mbstring": "*"
     },
 	"autoload": {
         "psr-4": {

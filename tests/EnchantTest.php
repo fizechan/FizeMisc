@@ -2,9 +2,13 @@
 /** @noinspection PhpComposerExtensionStubsInspection */
 
 
-use fize\crypt\Enchant;
+use fize\misc\Enchant;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Class EnchantTest
+ * @todo 待测试
+ */
 class EnchantTest extends TestCase
 {
 
@@ -19,7 +23,7 @@ class EnchantTest extends TestCase
 
     public function testBrokerDictExists()
     {
-        $tag = 'ch_DE';
+        $tag = 'en_US';
         $enchant = new Enchant();
         $enchant->brokerInit();
         $exists = $enchant->brokerDictExists($tag);

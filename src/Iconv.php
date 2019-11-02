@@ -1,11 +1,11 @@
 <?php
 /** @noinspection PhpComposerExtensionStubsInspection */
 
-namespace fize\crypt;
+namespace fize\misc;
 
 /**
  * iconv扩展
- * @package fize\crypt
+ * @package fize\misc
  */
 class Iconv
 {
@@ -30,7 +30,7 @@ class Iconv
     /**
      * 获取 iconv 扩展的内部配置变量
      * @param string $type all、input_encoding、output_encoding、internal_encoding
-     * @return mixed 成功时返回当前内部配置变量的值， 或者在失败时返回 FALSE。
+     * @return array|string 返回当前内部配置变量的值。
      */
     public static function getEncoding($type = "all")
     {
@@ -95,7 +95,7 @@ class Iconv
      * 返回字符串的字符数统计
      * @param string $str 该字符串
      * @param string $charset 如果省略了 charset 参数，假设 str 的编码为 iconv.internal_encoding。
-     * @return int 返回 str 字符数的统计，是整型。
+     * @return int 返回 str 字符数的统计。
      */
     public static function strlen($str, $charset = null)
     {
@@ -157,6 +157,7 @@ class Iconv
 
     /**
      * 将字符串 str 从 in_charset 转换编码到 out_charset。
+     * @deprecated 建议直接使用iconv原生函数
      * @param string $in_charset 输入的字符集。
      * @param string $out_charset 输出的字符集。
      * @param string $str 要转换的字符串。

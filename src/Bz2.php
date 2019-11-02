@@ -7,6 +7,7 @@ use Exception;
 
 /**
  * bzip2压缩包操作类
+ * @todo 压缩解压类应放置在统一的一个库里，待转移
  * @package fize\misc
  */
 class Bz2

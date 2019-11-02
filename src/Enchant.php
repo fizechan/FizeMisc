@@ -1,28 +1,28 @@
 <?php
 /** @noinspection PhpComposerExtensionStubsInspection */
 
-namespace fize\crypt;
+namespace fize\misc;
 
 /**
  * Enchant拼写检查类
- * @deprecated 实际使用情景并不多见
- * @package fize\crypt
+ * @deprecated 实际使用情景并不多见,待删除
+ * @package fize\misc
  */
 class Enchant
 {
     /**
-     * @var resource
+     * @var resource 代理
      */
     private $broker;
 
     /**
-     * @var resource
+     * @var resource 词典
      */
     private $dict;
 
     /**
      * 枚举赋值提供程序
-     * @return array 失败时返回false
+     * @return array
      */
     public function brokerDescribe()
     {
@@ -60,7 +60,7 @@ class Enchant
     /**
      * 获取给定后端目录路径。
      * @param int $dict_type ENCHANT_MYSPELL 或 ENCHANT_ISPELL.
-     * @return string 失败时返回false
+     * @return string
      */
     public function brokerGetDictPath($dict_type)
     {
@@ -88,7 +88,7 @@ class Enchant
 
     /**
      * 返回包含详细信息的可用字典列表。
-     * @return array 失败时返回false
+     * @return array
      */
     public function brokerListDicts()
     {
@@ -168,7 +168,7 @@ class Enchant
 
     /**
      * 描述单个字典
-     * @return array 失败时返回false
+     * @return array
      */
     public function dictDescribe()
     {
@@ -218,7 +218,7 @@ class Enchant
     /**
      * 如果单词拼写错误，将返回一个建议数组。
      * @param string $word 要检查的单词
-     * @return array 失败时返回false
+     * @return array
      */
     public function dictSuggest($word)
     {
