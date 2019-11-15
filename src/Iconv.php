@@ -4,19 +4,20 @@
 namespace fize\misc;
 
 /**
- * iconv扩展
- * @package fize\misc
+ * iconv类
  */
 class Iconv
 {
 
     /**
      * windows环境下的UTF8字符串转GBK
+     * @deprecated 不再直接提供该方法
      */
     const WIN_UTF8_2_GBK = 0;
 
     /**
      * windows环境下的GBK字符串转UTF8
+     * @deprecated 不再直接提供该方法
      */
     const WIN_GBK_2_UTF8 = 1;
 
@@ -29,7 +30,9 @@ class Iconv
 
     /**
      * 获取 iconv 扩展的内部配置变量
-     * @param string $type all、input_encoding、output_encoding、internal_encoding
+     *
+     * 参数 `$type` 可选值：all、input_encoding、output_encoding、internal_encoding
+     * @param string $type 类型
      * @return array|string 返回当前内部配置变量的值。
      */
     public static function getEncoding($type = "all")
@@ -39,8 +42,10 @@ class Iconv
 
     /**
      * 一次性解码多个 MIME 头字段
-     * @param string $encoded_headers 编码过的头，是一个字符串。
-     * @param int $mode 决定了遇到畸形 MIME 头字段时的行为    ICONV_MIME_DECODE_STRICT、ICONV_MIME_DECODE_CONTINUE_ON_ERROR
+     *
+     * 参数 `$mode` 可选值：ICONV_MIME_DECODE_STRICT、ICONV_MIME_DECODE_CONTINUE_ON_ERROR
+     * @param string $encoded_headers 编码过的头字符串。
+     * @param int $mode 决定了遇到畸形 MIME 头字段时的行为
      * @param string $charset 指定编码，如果省略了，将使用 iconv.internal_encoding。
      * @return array
      */
@@ -54,8 +59,10 @@ class Iconv
 
     /**
      * 解码一个MIME头字段
+     *
+     * 参数 `$mode` 可选值：ICONV_MIME_DECODE_STRICT、ICONV_MIME_DECODE_CONTINUE_ON_ERROR
      * @param string $encoded_header 编码头,是一个字符串.
-     * @param int $mode 决定了遇到畸形 MIME 头字段时的行为    ICONV_MIME_DECODE_STRICT、ICONV_MIME_DECODE_CONTINUE_ON_ERROR
+     * @param int $mode 决定了遇到畸形 MIME 头字段时的行为
      * @param string $charset 指定编码，如果省略了，将使用 iconv.internal_encoding。
      * @return string 如果解码成功,返回一个被解码的MIME字段, 如果在解码过程中出现一个错误,将返回FALSE .
      */
@@ -72,7 +79,7 @@ class Iconv
      * @param string $field_name 名
      * @param string $field_value 值
      * @param array $preferences 可选参数
-     * @return string 返回编码后的字符串，错误返回false
+     * @return string 返回编码后的字符串
      */
     public static function mimeEncode($field_name, $field_value, array $preferences = null)
     {
@@ -81,7 +88,9 @@ class Iconv
 
     /**
      * 为字符编码转换设定当前设置
-     * @param string $type input_encoding、output_encoding、internal_encoding
+     *
+     * 参数 `$type` 可选值：input_encoding、output_encoding、internal_encoding
+     * @param string $type 类型
      * @param string $charset 字符集。
      * @return bool 成功时返回 TRUE， 或者在失败时返回 FALSE。
      * @deprecated 自PHP5.6开始该方法已弃用
@@ -93,8 +102,10 @@ class Iconv
 
     /**
      * 返回字符串的字符数统计
+     *
+     * 如果省略了 charset 参数，假设 str 的编码为 iconv.internal_encoding。
      * @param string $str 该字符串
-     * @param string $charset 如果省略了 charset 参数，假设 str 的编码为 iconv.internal_encoding。
+     * @param string $charset 编码
      * @return int 返回 str 字符数的统计。
      */
     public static function strlen($str, $charset = null)
@@ -107,10 +118,12 @@ class Iconv
 
     /**
      * 查找字符串首次出现的位置
+     *
+     * 如果省略了 charset 参数，假设 str 的编码为 iconv.internal_encoding。
      * @param string $haystack 要寻找的字符
      * @param string $needle 被查找的字符串
      * @param int $offset 偏移
-     * @param string $charset 如果省略了 charset 参数，假设 str 的编码为 iconv.internal_encoding。
+     * @param string $charset 编码
      * @return int
      */
     public static function strpos($haystack, $needle, $offset = 0, $charset = null)
@@ -123,9 +136,11 @@ class Iconv
 
     /**
      * 从右查找字符串首次出现的位置
+     *
+     * 如果省略了 charset 参数，假设 str 的编码为 iconv.internal_encoding。
      * @param string $haystack 要寻找的字符
      * @param string $needle 被查找的字符串
-     * @param string $charset 如果省略了 charset 参数，假设 str 的编码为 iconv.internal_encoding。
+     * @param string $charset 编码
      * @return int
      */
     public static function strrpos($haystack, $needle, $charset = null)
@@ -138,10 +153,12 @@ class Iconv
 
     /**
      * 截取字符串的部分
+     *
+     * 如果省略了 charset 参数，假设 str 的编码为 iconv.internal_encoding。
      * @param string $str 原始字符串。
      * @param int $offset 偏移
      * @param int $length 指定长度
-     * @param string $charset 如果省略了 charset 参数，假设 str 的编码为 iconv.internal_encoding。
+     * @param string $charset 编码
      * @return string 返回 offset 和 length 参数指定的 str 的部分。如果 str 比 offset 字符数更短，将会返回 FALSE。 如果 str 是 offset 个字符的长度，将返回空字符串。
      */
     public static function substr($str, $offset, $length = null, $charset = null)
@@ -170,6 +187,7 @@ class Iconv
 
     /**
      * 对要使用的字符串进行中文兼容性处理
+     *
      * Windows、Linux系统针对中文字符创的兼容性处理
      * Windows由于使用GBK编码会导致中文路径乱码，进行UTF-8字符串转GBK字符串后再建立
      * @param string $str 待处理字符串

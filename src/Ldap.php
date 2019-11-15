@@ -1,8 +1,8 @@
 <?php
 /**
- *  LDAP扩展
- * @author FizeChan
- * @version V1.0.0.20170420
+ *  LDAP类
+ *
+ * 轻量级的目录访问协议
  * @todo 应用较少，有市场需要再进行编写
  */
 

@@ -2,14 +2,19 @@
 
 namespace fize\misc;
 
-
+/**
+ * 系统处理类
+ */
 class System
 {
 
     /**
      * 产生一条回溯跟踪(backtrace)
-     * @param int $options DEBUG_BACKTRACE_PROVIDE_OBJECT:是否填充 "object" 的索引;DEBUG_BACKTRACE_IGNORE_ARGS:是否忽略 "args" 的索引;
-     * @param int $limit 这个参数能够用于限制返回堆栈帧的数量。 默认为 (limit=0) ，返回所有的堆栈帧。
+     *
+     * 参数 `$options` ：DEBUG_BACKTRACE_PROVIDE_OBJECT:是否填充 "object" 的索引;DEBUG_BACKTRACE_IGNORE_ARGS:是否忽略 "args" 的索引;
+     * 参数 `$limit` ：这个参数能够用于限制返回堆栈帧的数量。 默认为 (limit=0) ，返回所有的堆栈帧。
+     * @param int $options 选项
+     * @param int $limit 限制返回堆栈帧的数量
      * @return array
      */
     public static function debugBacktrace($options = 0, $limit = 0)
@@ -19,8 +24,11 @@ class System
 
     /**
      * 打印一条回溯。
-     * @param int $options DEBUG_BACKTRACE_IGNORE_ARGS 是否忽略 "args" 的索引
-     * @param int $limit 这个参数能够用于限制返回堆栈帧的数量。 默认为 (limit=0) ，返回所有的堆栈帧。
+     *
+     * 参数 `$options` ：DEBUG_BACKTRACE_IGNORE_ARGS 是否忽略 "args" 的索引
+     * 参数 `$limit` ：这个参数能够用于限制返回堆栈帧的数量。 默认为 (limit=0) ，返回所有的堆栈帧。
+     * @param int $options 选项
+     * @param int $limit 限制返回堆栈帧的数量
      */
     public static function debugPrintBacktrace($options = 0, $limit = 0)
     {
@@ -55,9 +63,11 @@ class System
 
     /**
      * 发送错误信息到某个地方
+     *
+     * 参数 `$destination` ：它的含义描述于以上，由 message_type 参数所决定。
      * @param string $message 应该被记录的错误信息。
      * @param int $message_type 设置错误应该发送到何处0-4
-     * @param string $destination 目标。它的含义描述于以上，由 message_type 参数所决定。
+     * @param string $destination 目标
      * @param string $extra_headers 额外的头。当 message_type 设置为 1 的时候使用
      * @return bool
      */
