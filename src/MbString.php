@@ -26,7 +26,7 @@ class MbString
 
     /**
      * 获取特定字符
-     * @param int $cp
+     * @param int $cp 字符编码
      * @param string $encoding 编码
      * @return string
      */
@@ -261,7 +261,7 @@ class MbString
     }
 
     /**
-     * 返回预定义多字节字符串的多字节正则表达式的匹配部分的位置和长度
+     * 返回预定义多字节正则表达式的匹配部分的位置和长度
      * @param string $pattern 正则表达式
      * @param string $option 匹配的选项
      * @return int[]
@@ -611,14 +611,14 @@ class MbString
     }
 
     /**
-     * 大小写不敏感地查找指定字符在另一个字符串中最后一次的出现,并返回指定部分字符串
+     * 大小写不敏感地查找指定字符在另一个字符串中最后一次的出现
      *
      * 参数 `$encoding` ：如果省略，则使用内部字符编码。
      * @param string $haystack 被查找的字符串
      * @param string $needle 要查找这个字符串
      * @param bool $before_needle 决定这个函数返回 haystack 的哪一部分
      * @param string $encoding 使用的字符编码名称
-     * @return string|false 没找到时返回false
+     * @return string|false 返回指定部分字符串，没找到时返回false
      */
     public static function strrichr($haystack, $needle, $before_needle = false, $encoding = null)
     {
