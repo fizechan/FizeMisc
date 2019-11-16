@@ -11,7 +11,9 @@ class System
     /**
      * 产生一条回溯跟踪(backtrace)
      *
-     * 参数 `$options` ：DEBUG_BACKTRACE_PROVIDE_OBJECT:是否填充 "object" 的索引;DEBUG_BACKTRACE_IGNORE_ARGS:是否忽略 "args" 的索引;
+     * 参数 `$options` ：
+     * DEBUG_BACKTRACE_PROVIDE_OBJECT:是否填充 "object" 的索引;
+     * DEBUG_BACKTRACE_IGNORE_ARGS:是否忽略 "args" 的索引;
      * 参数 `$limit` ：这个参数能够用于限制返回堆栈帧的数量。 默认为 (limit=0) ，返回所有的堆栈帧。
      * @param int $options 选项
      * @param int $limit 限制返回堆栈帧的数量

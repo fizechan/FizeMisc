@@ -39,9 +39,10 @@ class MbString
      * 对字符串进行大小写转换,转换模式由 mode 指定。
      *
      * 参数 `$mode` 可以是 MB_CASE_UPPER、 MB_CASE_LOWER 和 MB_CASE_TITLE 的其中一个
+     * 参数 `$encoding` ：如果省略，则使用内部字符编码。
      * @param string $str 要转化的字符串
      * @param int $mode 转换的模式
-     * @param string $encoding 字符编码。如果省略，则使用内部字符编码。
+     * @param string $encoding 字符编码
      * @return string
      */
     public static function convertCase($str, $mode, $encoding = null)
@@ -51,9 +52,11 @@ class MbString
 
     /**
      * 转换字符的编码
+     *
+     * 参数 `$from_encoding` ：如果没有提供，则会使用内部（internal）编码。
      * @param string $str 要转码的字符串
      * @param string $to_encoding 要转换成的编码类型。
-     * @param string $from_encoding 原编码，如果没有提供，则会使用内部（internal）编码。
+     * @param string $from_encoding 原编码
      * @return string
      */
     public static function convertEncoding($str, $to_encoding, $from_encoding = null)
@@ -66,9 +69,11 @@ class MbString
 
     /**
      * 将“假名”从另一个转换为另一个(“zen-kaku”、“han-kaku”等等)
+     *
+     * 参数 `$encoding` ：如果没有提供，则会使用内部（internal）编码。
      * @param string $str 要转码的字符串
      * @param string $option 转码选项
-     * @param string $encoding 原编码，如果没有提供，则会使用内部（internal）编码。
+     * @param string $encoding 原编码
      * @return string
      */
     public static function convertKana($str, $option = 'KV', $encoding = null)
@@ -80,8 +85,9 @@ class MbString
     }
 
     /**
-     * 转换一个或多个变量的字符编码，假设所有的参数都具有同样的编码。
+     * 转换一个或多个变量的字符编码
      *
+     * 该方法假设所有的参数都具有同样的编码。
      * 参数 `$vars` 可以接受 String、Array 和 Object 的类型。
      * @since PHP5.6
      * @param string $to_encoding 指定编码
@@ -124,7 +130,7 @@ class MbString
      * 编码顺序可以由数组或者逗号分隔的列表字符串指定
      * @param string $str 待检查的字符串
      * @param array|string $encoding_list 字符编码列表
-     * @param bool $strict 是否严格地检测编码。默认是 FALSE。
+     * @param bool $strict 是否严格地检测编码
      * @return string
      */
     public static function detectEncoding($str, $encoding_list = null, $strict = false)
@@ -134,8 +140,10 @@ class MbString
 
     /**
      * 设置/获取 字符编码的检测顺序
+     *
+     * 设置编码检测顺序时候，成功时返回 TRUE，识别时候返回 FALSE。在获取编码检测顺序的时候，会返回排序过的编码数组。
      * @param array|string $encoding_list 一个数组或者逗号分隔的字符编码列表
-     * @return bool|array 设置编码检测顺序时候，成功时返回 TRUE，识别时候返回 FALSE。在获取编码检测顺序的时候，会返回排序过的编码数组。
+     * @return bool|array
      */
     public static function detectOrder($encoding_list = null)
     {
@@ -473,11 +481,12 @@ class MbString
      * 发送编码过的邮件
      *
      * 可通过逗号分隔地址的 `$to` 来指定多个收件人。该参数不会被自动编码
+     * 参数 `$additional_parameter` ：在使用 sendmail 时对设置正确的返回路径头很有帮助
      * @param string $to 被发送到该邮件地址
      * @param string $subject 邮件标题
      * @param string $message 邮件消息
      * @param string $additional_headers 要插入到电子邮件标题末尾的字符串。
-     * @param string $additional_parameter MTA 命令行参数。在使用 sendmail 时对设置正确的返回路径头很有帮助
+     * @param string $additional_parameter MTA 命令行参数
      * @return bool
      */
     public static function sendMail($to, $subject, $message, $additional_headers = null, $additional_parameter = null)
@@ -489,7 +498,7 @@ class MbString
      * 使用正则表达式分割多字节字符串
      * @param string $pattern 正则表达式
      * @param string $string 待分割的字符串
-     * @param int $limit 如果指定了可选参数 limit，将最多分割为 limit 个元素
+     * @param int $limit 最多分割为 limit 个元素
      * @return array
      */
     public static function split($pattern, $string, $limit = null)
@@ -530,10 +539,13 @@ class MbString
 
     /**
      * 大小写不敏感地查找字符串在另一个字符串中首次出现的位置
+     *
+     * 参数 `$offset` ：如果是负数，就从字符串的尾部开始统计。
+     * 参数 `$encoding` ：如果省略了它，将使用内部字符编码。
      * @param string $haystack 被查找的字符串
      * @param string $needle 要查找这个字符串
-     * @param int $offset 开始搜索的位置。如果是负数，就从字符串的尾部开始统计。
-     * @param string $encoding 使用的字符编码名称。如果省略了它，将使用内部字符编码。
+     * @param int $offset 开始搜索的位置
+     * @param string $encoding 使用的字符编码名称
      * @return int|false 没找到返回false
      */
     public static function stripos($haystack, $needle, $offset = 0, $encoding = null)
@@ -542,12 +554,14 @@ class MbString
     }
 
     /**
-     * 大小写不敏感地查找字符串在另一个字符串里的首次出现，并返回指定部分字符串
+     * 大小写不敏感地查找字符串在另一个字符串里的首次出现
+     *
+     * 参数 `$encoding` ：如果省略了它，将使用内部字符编码。
      * @param string $haystack 被查找的字符串
      * @param string $needle 要查找这个字符串
      * @param bool $before_needle 决定这个函数返回 haystack 的哪一部分
-     * @param string $encoding 使用的字符编码名称。如果省略了它，将使用内部字符编码。
-     * @return string|false 没找到时返回false
+     * @param string $encoding 使用的字符编码名称
+     * @return string|false 返回指定部分字符串，没找到时返回false
      */
     public static function stristr($haystack, $needle, $before_needle = false, $encoding = null)
     {
@@ -582,14 +596,14 @@ class MbString
     }
 
     /**
-     * 查找指定字符在另一个字符串中最后一次的出现，并返回指定部分字符串
+     * 查找指定字符在另一个字符串中最后一次的出现
      *
      * 参数 `$encoding` ：如果省略，则使用内部字符编码。
      * @param string $haystack 被查找的字符串
      * @param string $needle 要查找这个字符串
      * @param bool $before_needle 决定这个函数返回 haystack 的哪一部分
      * @param string $encoding 使用的字符编码名称
-     * @return string|false 没找到时返回false
+     * @return string|false 返回指定部分字符串，没找到时返回false
      */
     public static function strrchr($haystack, $needle, $before_needle = false, $encoding = null)
     {
@@ -698,7 +712,7 @@ class MbString
     /**
      * 设置/获取替代字符
      * @param mixed $substrchar 指定替代选项
-     * @return mixed 如果设置了 substchar，在成功时返回 TRUE，失败时返回 FALSE。如果没有设置 substchar，它将返回当前设置。
+     * @return mixed 设置时，在成功时返回 TRUE，失败时返回 FALSE。否则返回当前设置。
      */
     public static function substituteCharacter($substrchar = null)
     {

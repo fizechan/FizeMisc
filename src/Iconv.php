@@ -61,10 +61,11 @@ class Iconv
      * 解码一个MIME头字段
      *
      * 参数 `$mode` 可选值：ICONV_MIME_DECODE_STRICT、ICONV_MIME_DECODE_CONTINUE_ON_ERROR
+     * 如果在解码过程中出现一个错误,将返回FALSE .
      * @param string $encoded_header 编码头,是一个字符串.
      * @param int $mode 决定了遇到畸形 MIME 头字段时的行为
      * @param string $charset 指定编码，如果省略了，将使用 iconv.internal_encoding。
-     * @return string 如果解码成功,返回一个被解码的MIME字段, 如果在解码过程中出现一个错误,将返回FALSE .
+     * @return string 如果解码成功,返回一个被解码的MIME字段,
      */
     public static function mimeDecode($encoded_header, $mode = 0, $charset = null)
     {
@@ -155,11 +156,12 @@ class Iconv
      * 截取字符串的部分
      *
      * 如果省略了 charset 参数，假设 str 的编码为 iconv.internal_encoding。
+     * 如果 str 比 offset 字符数更短，将会返回 FALSE。 如果 str 是 offset 个字符的长度，将返回空字符串。
      * @param string $str 原始字符串。
      * @param int $offset 偏移
      * @param int $length 指定长度
      * @param string $charset 编码
-     * @return string 返回 offset 和 length 参数指定的 str 的部分。如果 str 比 offset 字符数更短，将会返回 FALSE。 如果 str 是 offset 个字符的长度，将返回空字符串。
+     * @return string 返回 offset 和 length 参数指定的 str 的部分。
      */
     public static function substr($str, $offset, $length = null, $charset = null)
     {

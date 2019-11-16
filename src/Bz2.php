@@ -19,7 +19,9 @@ class Bz2
 
     /**
      * 构造
-     * @param string $file 待打开的文件的文件名，或者已经存在的资源流。指定文件不存在时将尝试创建
+     *
+     * 指定文件不存在时将尝试创建
+     * @param string $file 待打开的文件的文件名，或者已经存在的资源流。
      * @param string $mode 和 fopen() 函数类似，但仅仅支持 'r'（读）和 'w'（写）。
      */
     public function __construct($file, $mode)
@@ -116,7 +118,8 @@ class Bz2
     /**
      * 打开一个经 bzip2 压缩过的文件
      *
-     * `$mode` 和 `fopen()` 函数类似，但仅仅支持 'r'（读）和 'w'（写）。 其他任何模式都会导致 bzopen 返回 FALSE。
+     * `$mode` 和 `fopen()` 函数类似，但仅仅支持 'r'（读）和 'w'（写）。
+     * 其他任何模式都会导致 bzopen 返回 FALSE。
      * @param string $file 待打开的文件。
      * @param string $mode 模式
      */
@@ -139,9 +142,11 @@ class Bz2
     }
 
     /**
-     * 从文件读取数据。 读取到 length（未经压缩的长度）个字节，或者到文件尾，取决于先到哪个。
+     * 从文件读取数据
      *
-     * 如果没有提供参数 `$length`， bzread()  一次会读入 1024 个字节（未经压缩的长度）。 一次最大可读入 8192 个未压缩的字节。
+     * 读取到 length（未经压缩的长度）个字节，或者到文件尾，取决于先到哪个。
+     * 如果没有提供参数 `$length`， bzread()  一次会读入 1024 个字节（未经压缩的长度）。
+     * 一次最大可读入 8192 个未压缩的字节。
      * @param int $length 读取字节长度
      * @return string 返回解压的数据
      */
@@ -154,7 +159,8 @@ class Bz2
      * 二进制安全地写入 bzip2 文件
      *
      * 注意不能多次调用该方法，bz2文件是一次性写入并覆盖的
-     * 如果提供了参数 `$length` ，将仅仅写入 length（未压缩）个字节，若 data 小于该指定的长度则写入全部数据。
+     * 如果提供了参数 `$length` ，将仅仅写入 length（未压缩）个字节，
+     * 若 data 小于该指定的长度则写入全部数据。
      * @param string $data 要写入的数据。
      * @param int $length 写入字节长度
      * @return int 返回写入的数据字节数
