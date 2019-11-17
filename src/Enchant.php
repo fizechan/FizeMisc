@@ -59,7 +59,8 @@ class Enchant
     /**
      * 获取给定后端目录路径。
      *
-     * 参数 `$dict_type` 可选值：ENCHANT_MYSPELL 或 ENCHANT_ISPELL.
+     * 参数 `$dict_type` :
+     *   可选值：ENCHANT_MYSPELL 或 ENCHANT_ISPELL.
      * @param int $dict_type 字典类型
      * @return string
      */
@@ -88,7 +89,7 @@ class Enchant
     }
 
     /**
-     * 返回包含详细信息的可用字典列表。
+     * 返回包含详细信息的可用字典列表
      * @return array
      */
     public function brokerListDicts()
@@ -121,7 +122,8 @@ class Enchant
     /**
      * 为给定后端设置目录路径
      *
-     * 参数 `$dict_type` 可选值：ENCHANT_MYSPELL 或 ENCHANT_ISPELL.
+     * 参数 `$dict_type` :
+     *   可选值：ENCHANT_MYSPELL 或 ENCHANT_ISPELL.
      * @param int $dict_type 字典类型
      * @param string $value 字典目录的路径。
      */
@@ -133,7 +135,7 @@ class Enchant
     /**
      * 声明要为该语言使用的词典的首选项
      *
-     * 特殊的“*”标记可以用作语言标记来声明任何没有显式声明排序的语言的默认排序。
+     * 特殊的 “*” 标记可以用作语言标记来声明任何没有显式声明排序的语言的默认排序。
      * @param string $tag 语言标签
      * @param string $ordering 用逗号分隔的提供程序名称列表
      * @return bool
@@ -190,7 +192,7 @@ class Enchant
     }
 
     /**
-     * 在这个拼写过程中是否存在“word”
+     * 在这个拼写过程中是否存在 “word”
      * @param string $word 要检查的单词
      * @return bool
      */

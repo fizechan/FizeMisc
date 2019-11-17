@@ -31,7 +31,8 @@ class Iconv
     /**
      * 获取 iconv 扩展的内部配置变量
      *
-     * 参数 `$type` 可选值：all、input_encoding、output_encoding、internal_encoding
+     * 参数 `$type` :
+     *   可选值：all、input_encoding、output_encoding、internal_encoding
      * @param string $type 类型
      * @return array|string 返回当前内部配置变量的值。
      */
@@ -43,10 +44,13 @@ class Iconv
     /**
      * 一次性解码多个 MIME 头字段
      *
-     * 参数 `$mode` 可选值：ICONV_MIME_DECODE_STRICT、ICONV_MIME_DECODE_CONTINUE_ON_ERROR
+     * 参数 `$mode` :
+     *   可选值：ICONV_MIME_DECODE_STRICT、ICONV_MIME_DECODE_CONTINUE_ON_ERROR
+     * 参数 `$charset` :
+     *   如果省略了，将使用 iconv.internal_encoding。
      * @param string $encoded_headers 编码过的头字符串。
      * @param int $mode 决定了遇到畸形 MIME 头字段时的行为
-     * @param string $charset 指定编码，如果省略了，将使用 iconv.internal_encoding。
+     * @param string $charset 指定编码
      * @return array
      */
     public static function mimeDecodeHeaders($encoded_headers, $mode = 0, $charset = null)
@@ -60,11 +64,14 @@ class Iconv
     /**
      * 解码一个MIME头字段
      *
-     * 参数 `$mode` 可选值：ICONV_MIME_DECODE_STRICT、ICONV_MIME_DECODE_CONTINUE_ON_ERROR
+     * 参数 `$mode` :
+     *   可选值：ICONV_MIME_DECODE_STRICT、ICONV_MIME_DECODE_CONTINUE_ON_ERROR
+     * 参数 `$charset` :
+     *   如果省略了，将使用 iconv.internal_encoding。
      * 如果在解码过程中出现一个错误,将返回FALSE .
      * @param string $encoded_header 编码头,是一个字符串.
      * @param int $mode 决定了遇到畸形 MIME 头字段时的行为
-     * @param string $charset 指定编码，如果省略了，将使用 iconv.internal_encoding。
+     * @param string $charset 指定编码
      * @return string 如果解码成功,返回一个被解码的MIME字段,
      */
     public static function mimeDecode($encoded_header, $mode = 0, $charset = null)
@@ -90,7 +97,8 @@ class Iconv
     /**
      * 为字符编码转换设定当前设置
      *
-     * 参数 `$type` 可选值：input_encoding、output_encoding、internal_encoding
+     * 参数 `$type` :
+     *   可选值：input_encoding、output_encoding、internal_encoding
      * @param string $type 类型
      * @param string $charset 字符集。
      * @return bool 成功时返回 TRUE， 或者在失败时返回 FALSE。
@@ -104,7 +112,8 @@ class Iconv
     /**
      * 返回字符串的字符数统计
      *
-     * 如果省略了 charset 参数，假设 str 的编码为 iconv.internal_encoding。
+     * 参数 `$charset` :
+     *   如果省略了 charset 参数，假设 str 的编码为 iconv.internal_encoding。
      * @param string $str 该字符串
      * @param string $charset 编码
      * @return int 返回 str 字符数的统计。
@@ -120,7 +129,8 @@ class Iconv
     /**
      * 查找字符串首次出现的位置
      *
-     * 如果省略了 charset 参数，假设 str 的编码为 iconv.internal_encoding。
+     * 参数 `$charset` :
+     *   如果省略了 charset 参数，假设 str 的编码为 iconv.internal_encoding。
      * @param string $haystack 要寻找的字符
      * @param string $needle 被查找的字符串
      * @param int $offset 偏移
@@ -138,7 +148,8 @@ class Iconv
     /**
      * 从右查找字符串首次出现的位置
      *
-     * 如果省略了 charset 参数，假设 str 的编码为 iconv.internal_encoding。
+     * 参数 `$charset` :
+     *   如果省略了 charset 参数，假设 str 的编码为 iconv.internal_encoding。
      * @param string $haystack 要寻找的字符
      * @param string $needle 被查找的字符串
      * @param string $charset 编码
@@ -155,7 +166,8 @@ class Iconv
     /**
      * 截取字符串的部分
      *
-     * 如果省略了 charset 参数，假设 str 的编码为 iconv.internal_encoding。
+     * 参数 `$charset` :
+     *   如果省略了 charset 参数，假设 str 的编码为 iconv.internal_encoding。
      * 如果 str 比 offset 字符数更短，将会返回 FALSE。 如果 str 是 offset 个字符的长度，将返回空字符串。
      * @param string $str 原始字符串。
      * @param int $offset 偏移

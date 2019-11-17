@@ -14,7 +14,8 @@ class MbString
      * 检查指定的字节流在指定的编码里是否有效
      *
      * 该方法能有效避免所谓的"无效编码攻击（Invalid Encoding Attack）"。
-     * 如果省略了参数 `$var` ，此函数会检查所有来自最初请求所有的输入。
+     * 参数 `$var` :
+     *   如果省略了参数 `$var` ，此函数会检查所有来自最初请求所有的输入。
      * @param string $var 要检查的字节流
      * @param string $encoding 期望的编码
      * @return bool
@@ -38,8 +39,10 @@ class MbString
     /**
      * 对字符串进行大小写转换,转换模式由 mode 指定。
      *
-     * 参数 `$mode` 可以是 MB_CASE_UPPER、 MB_CASE_LOWER 和 MB_CASE_TITLE 的其中一个
-     * 参数 `$encoding` ：如果省略，则使用内部字符编码。
+     * 参数 `$mode` :
+     *   可以是 MB_CASE_UPPER、 MB_CASE_LOWER 和 MB_CASE_TITLE 的其中一个
+     * 参数 `$encoding` :
+     *   如果省略，则使用内部字符编码。
      * @param string $str 要转化的字符串
      * @param int $mode 转换的模式
      * @param string $encoding 字符编码
@@ -53,7 +56,8 @@ class MbString
     /**
      * 转换字符的编码
      *
-     * 参数 `$from_encoding` ：如果没有提供，则会使用内部（internal）编码。
+     * 参数 `$from_encoding` :
+     *   如果没有提供，则会使用内部（internal）编码。
      * @param string $str 要转码的字符串
      * @param string $to_encoding 要转换成的编码类型。
      * @param string $from_encoding 原编码
@@ -70,7 +74,8 @@ class MbString
     /**
      * 将“假名”从另一个转换为另一个(“zen-kaku”、“han-kaku”等等)
      *
-     * 参数 `$encoding` ：如果没有提供，则会使用内部（internal）编码。
+     * 参数 `$encoding` :
+     *   如果没有提供，则会使用内部（internal）编码。
      * @param string $str 要转码的字符串
      * @param string $option 转码选项
      * @param string $encoding 原编码
@@ -88,7 +93,8 @@ class MbString
      * 转换一个或多个变量的字符编码
      *
      * 该方法假设所有的参数都具有同样的编码。
-     * 参数 `$vars` 可以接受 String、Array 和 Object 的类型。
+     * 参数 `$vars` :
+     *   可以接受 String、Array 和 Object 的类型。
      * @since PHP5.6
      * @param string $to_encoding 指定编码
      * @param string $from_encoding 原编码
@@ -113,7 +119,8 @@ class MbString
     /**
      * 根据 HTML 数字字符串解码成字符
      *
-     * 如果省略参数 `$encoding` ，则使用内部字符编码。
+     * 参数 `$encoding` :
+     *   如果省略参数 `$encoding` ，则使用内部字符编码。
      * @param string $str 要解码的字符串
      * @param array $convmap 指定了要转换的代码区域。
      * @param string $encoding 字符编码。
@@ -141,7 +148,8 @@ class MbString
     /**
      * 设置/获取 字符编码的检测顺序
      *
-     * 设置编码检测顺序时候，成功时返回 TRUE，识别时候返回 FALSE。在获取编码检测顺序的时候，会返回排序过的编码数组。
+     * 设置编码检测顺序时候，成功时返回 TRUE，识别时候返回 FALSE。
+     * 在获取编码检测顺序的时候，会返回排序过的编码数组。
      * @param array|string $encoding_list 一个数组或者逗号分隔的字符编码列表
      * @return bool|array
      */
@@ -156,12 +164,13 @@ class MbString
     /**
      * 为 MIME 头编码字符串
      *
-     * 参数 `$transfer_encoding` 可以是 "B"（Base64）也可以是 "Q"（Quoted-Printable）。如果未设置，将回退为 "B"。
+     * 参数 `$transfer_encoding` :
+     *   可以是 "B"（Base64）也可以是 "Q"（Quoted-Printable）。如果未设置，将回退为 "B"。
      * @param string $str 要编码的字符串
      * @param string $charset 指定了 str 的字符集名
      * @param string $transfer_encoding 指定了 MIME 的编码方案
      * @param string $linefeed 指定了 EOL（行尾）标记
-     * @param int $indent 首行缩进（header 里 str 前的字符数目）。
+     * @param int $indent 首行缩进（header 里 str 前的字符数目）
      * @return string 转换后的字符串版本以 ASCII 形式表达。
      */
     public static function encodeMimeheader($str, $charset = null, $transfer_encoding = 'B', $linefeed = "\r\n", $indent = 0)
@@ -307,7 +316,7 @@ class MbString
      * 正则表达式匹配多字节支持
      * @param string $pattern 正则表达式
      * @param string $string 要匹配的字符串
-     * @param array $regs 匹配项将存储在数组regs的元素中
+     * @param array $regs 匹配项将存储在该数组的元素中
      * @return int
      */
     public static function ereg($pattern, $string, array &$regs = null)
@@ -332,7 +341,7 @@ class MbString
      * 正则表达式匹配多字节支持的忽略大小写
      * @param string $pattern 正则表达式
      * @param string $string 要搜索的字符串
-     * @param array $regs 匹配项将存储在数组regs的元素中
+     * @param array $regs 匹配项将存储在该数组的元素中
      * @return int
      */
     public static function eregi($pattern, $string, array &$regs = null)
@@ -353,7 +362,8 @@ class MbString
     /**
      * 检测 HTTP 输入字符的编码
      *
-     * 参数 `$type`: "G" 是 GET，"P" 是 POST，"C" 是 COOKIE，"S" 是 string，"L" 是 list，以及 "I" 是整个列表
+     * 参数 `$type` :
+     *   "G" 是 GET，"P" 是 POST，"C" 是 COOKIE，"S" 是 string，"L" 是 list，以及 "I" 是整个列表
      * @param string $type 设置的字符串指定了输入类型
      * @return mixed 如果没有处理过任何指定的 HTTP 输入，它将返回 FALSE。
      */
@@ -467,6 +477,7 @@ class MbString
     }
 
     /**
+     * 清理格式不正确的字符
      * @notice 本函数还未编写文档，仅有参数列表
      * @param string $str 字符串
      * @param string $encoding 编码
@@ -481,7 +492,8 @@ class MbString
      * 发送编码过的邮件
      *
      * 可通过逗号分隔地址的 `$to` 来指定多个收件人。该参数不会被自动编码
-     * 参数 `$additional_parameter` ：在使用 sendmail 时对设置正确的返回路径头很有帮助
+     * 参数 `$additional_parameter` :
+     *   在使用 sendmail 时对设置正确的返回路径头很有帮助
      * @param string $to 被发送到该邮件地址
      * @param string $subject 邮件标题
      * @param string $message 邮件消息
@@ -509,7 +521,8 @@ class MbString
     /**
      * 获取字符的一部分
      *
-     * 参数 `$start`: 负表示返回的字符串是从 str 末尾处第 start 个字节开始的
+     * 参数 `$start` :
+     *   负表示返回的字符串是从 str 末尾处第 start 个字节开始的
      * @param string $str 字符串
      * @param int $start 开始偏移量
      * @param int $length 长度
@@ -524,7 +537,9 @@ class MbString
     /**
      * 获取按指定宽度截断的字符串
      *
-     * 参数 `$start`: 从这些字符数开始的截取字符串。（默认是 0 个字符）如果 start 是负数，就是字符串结尾处的字符数。
+     * 参数 `$start` :
+     *   从这些字符数开始的截取字符串。（默认是 0 个字符）。
+     *   如果 start 是负数，就是字符串结尾处的字符数。
      * @param string $str 字符串
      * @param int $start 开始位置的偏移
      * @param int $width 所需修剪的宽度。负数的宽度是从字符串结尾处统计的。
@@ -540,8 +555,10 @@ class MbString
     /**
      * 大小写不敏感地查找字符串在另一个字符串中首次出现的位置
      *
-     * 参数 `$offset` ：如果是负数，就从字符串的尾部开始统计。
-     * 参数 `$encoding` ：如果省略了它，将使用内部字符编码。
+     * 参数 `$offset` :
+     *   如果是负数，就从字符串的尾部开始统计。
+     * 参数 `$encoding` :
+     *   如果省略了它，将使用内部字符编码。
      * @param string $haystack 被查找的字符串
      * @param string $needle 要查找这个字符串
      * @param int $offset 开始搜索的位置
@@ -556,7 +573,8 @@ class MbString
     /**
      * 大小写不敏感地查找字符串在另一个字符串里的首次出现
      *
-     * 参数 `$encoding` ：如果省略了它，将使用内部字符编码。
+     * 参数 `$encoding` :
+     *   如果省略了它，将使用内部字符编码。
      * @param string $haystack 被查找的字符串
      * @param string $needle 要查找这个字符串
      * @param bool $before_needle 决定这个函数返回 haystack 的哪一部分
@@ -582,8 +600,10 @@ class MbString
     /**
      * 查找字符串在另一个字符串中首次出现的位置
      *
-     * 参数 `$offset` ：如果没有提供该参数，将会使用 0。负数的 offset 会从字符串尾部开始统计。
-     * 参数 `$encoding` ：如果省略，则使用内部字符编码。
+     * 参数 `$offset` :
+     *   如果没有提供该参数，将会使用 0。负数的 offset 会从字符串尾部开始统计。
+     * 参数 `$encoding` :
+     *   如果省略，则使用内部字符编码。
      * @param string $haystack 被查找的字符串
      * @param string $needle 要查找这个字符串
      * @param int $offset 搜索位置的偏移
@@ -598,7 +618,8 @@ class MbString
     /**
      * 查找指定字符在另一个字符串中最后一次的出现
      *
-     * 参数 `$encoding` ：如果省略，则使用内部字符编码。
+     * 参数 `$encoding` :
+     *   如果省略，则使用内部字符编码。
      * @param string $haystack 被查找的字符串
      * @param string $needle 要查找这个字符串
      * @param bool $before_needle 决定这个函数返回 haystack 的哪一部分
@@ -613,7 +634,8 @@ class MbString
     /**
      * 大小写不敏感地查找指定字符在另一个字符串中最后一次的出现
      *
-     * 参数 `$encoding` ：如果省略，则使用内部字符编码。
+     * 参数 `$encoding` :
+     *   如果省略，则使用内部字符编码。
      * @param string $haystack 被查找的字符串
      * @param string $needle 要查找这个字符串
      * @param bool $before_needle 决定这个函数返回 haystack 的哪一部分
@@ -628,7 +650,8 @@ class MbString
     /**
      * 大小写不敏感地在字符串中查找一个字符串最后出现的位置
      *
-     * 参数 `$encoding` ：如果省略，则使用内部字符编码。
+     * 参数 `$encoding` :
+     *   如果省略，则使用内部字符编码。
      * @param string $haystack 被查找的字符串
      * @param string $needle 要查找这个字符串
      * @param int $offset 开始搜索的位置
@@ -643,7 +666,8 @@ class MbString
     /**
      * 查找字符串在一个字符串中最后出现的位置
      *
-     * 参数 `$encoding` ：如果省略，则使用内部字符编码。
+     * 参数 `$encoding` :
+     *   如果省略，则使用内部字符编码。
      * @param string $haystack 被查找的字符串
      * @param string $needle 要查找这个字符串
      * @param int $offset 开始搜索的位置
@@ -658,7 +682,8 @@ class MbString
     /**
      * 查找字符串在另一个字符串里的首次出现,并返回指定部分字符串
      *
-     * 参数 `$encoding` ：如果省略，则使用内部字符编码。
+     * 参数 `$encoding` :
+     *   如果省略，则使用内部字符编码。
      * @param string $haystack 被查找的字符串
      * @param string $needle 要查找这个字符串
      * @param bool $before_needle 决定这个函数返回 haystack 的哪一部分
@@ -673,7 +698,8 @@ class MbString
     /**
      * 使字符串小写
      *
-     * 参数 `$encoding` ：如果省略，则使用内部字符编码。
+     * 参数 `$encoding` :
+     *   如果省略，则使用内部字符编码。
      * @param string $str 字符串
      * @param string $encoding 使用的字符编码名称
      * @return string
@@ -686,7 +712,8 @@ class MbString
     /**
      * 使字符串大写
      *
-     * 参数 `$encoding` ：如果省略，则使用内部字符编码。
+     * 参数 `$encoding` :
+     *   如果省略，则使用内部字符编码。
      * @param string $str 字符串
      * @param string $encoding 使用的字符编码名称
      * @return string
@@ -699,7 +726,8 @@ class MbString
     /**
      * 返回字符串的宽度,多字节字符通常是单字节字符的两倍宽度。
      *
-     * 参数 `$encoding` ：如果省略，则使用内部字符编码。
+     * 参数 `$encoding` :
+     *   如果省略，则使用内部字符编码。
      * @param string $str 字符串
      * @param string $encoding 使用的字符编码名称
      * @return int
@@ -722,7 +750,8 @@ class MbString
     /**
      * 统计字符串出现的次数
      *
-     * 参数 `$encoding` ：如果省略，则使用内部字符编码。
+     * 参数 `$encoding` :
+     *   如果省略，则使用内部字符编码。
      * @param string $haystack 被查找的字符串
      * @param string $needle 要查找这个字符串
      * @param string $encoding 使用的字符编码名称
@@ -736,7 +765,8 @@ class MbString
     /**
      * 获取部分字符串
      *
-     * 参数 `$encoding` ：如果省略，则使用内部字符编码。
+     * 参数 `$encoding` :
+     *   如果省略，则使用内部字符编码。
      * @param string $str 字符串
      * @param int $start 开始下标
      * @param int $length 获取长度
