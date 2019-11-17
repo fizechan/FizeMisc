@@ -4,7 +4,7 @@
 namespace fize\misc;
 
 /**
- * iconv类
+ * iconv编码类
  */
 class Iconv
 {

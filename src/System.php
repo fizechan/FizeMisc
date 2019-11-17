@@ -143,7 +143,9 @@ class System
     }
 
     /**
-     * 产生一个用户级别的 error/warning/notice 信息,是 triggerError() 方法的别名
+     * 产生一个用户级别的 error/warning/notice 信息
+     *
+     * 是 triggerError() 方法的别名
      * @param string $error_msg 该 error 的特定错误信息
      * @param int $error_type 该 error 所特定的错误类型
      * @return bool
