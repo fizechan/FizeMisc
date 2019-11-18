@@ -4,7 +4,7 @@
 namespace fize\misc;
 
 /**
- * Enchant拼写检查类
+ * enchant 拼写检查类
  * @deprecated 实际使用情景并不多见,待删除
  */
 class Enchant

@@ -5,7 +5,7 @@
 namespace fize\misc;
 
 /**
- * MbString类
+ * MbString 类
  */
 class MbString
 {
