@@ -1,7 +1,7 @@
 {
     "name": "fize/misc",
     "description": "一些常用的杂项类，方便调用。",
-    "license": "Apache-2.0",
+    "license": "MIT",
     "authors": [
         {
             "name": "FizeChan",
