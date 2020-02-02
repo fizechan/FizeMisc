@@ -128,13 +128,13 @@ class Preg
      * 参数 `$limit` :
      *   对于每个模式用于每个 subject 字符串的最大可替换次数。 默认是-1（无限制）。
      * @param mixed $pattern 要搜索的模式，可以使字符串或一个字符串数组。
-     * @param callable $callback 一个回调函数，在每次需要替换时调用
+     * @param callable|array $callback 一个回调函数，在每次需要替换时调用
      * @param mixed $subject 要搜索替换的目标字符串或字符串数组。
      * @param int $limit 最大可替换次数
      * @param int $count 如果指定，这个变量将被填充为替换执行的次数。
      * @return mixed 如果subject是一个数组， preg_replace_callback()返回一个数组，其他情况返回字符串。 错误发生时返回 NULL。
      */
-    public static function replaceCallback($pattern, callable $callback, $subject, $limit = -1, &$count = null)
+    public static function replaceCallback($pattern, $callback, $subject, $limit = -1, &$count = null)
     {
         return preg_replace_callback($pattern, $callback, $subject, $limit, $count);
     }
