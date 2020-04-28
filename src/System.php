@@ -3,7 +3,7 @@
 namespace fize\misc;
 
 /**
- * 系统处理类
+ * 系统相关
  */
 class System
 {
@@ -17,7 +17,7 @@ class System
      * 参数 `$limit` :
      *   这个参数能够用于限制返回堆栈帧的数量。 默认为 (limit=0) ，返回所有的堆栈帧。
      * @param int $options 选项
-     * @param int $limit 限制返回堆栈帧的数量
+     * @param int $limit   限制返回堆栈帧的数量
      * @return array
      */
     public static function debugBacktrace($options = 0, $limit = 0)
@@ -33,7 +33,7 @@ class System
      * 参数 `$limit` :
      *   这个参数能够用于限制返回堆栈帧的数量。 默认为 (limit=0) ，返回所有的堆栈帧。
      * @param int $options 选项
-     * @param int $limit 限制返回堆栈帧的数量
+     * @param int $limit   限制返回堆栈帧的数量
      */
     public static function debugPrintBacktrace($options = 0, $limit = 0)
     {
@@ -51,6 +51,7 @@ class System
 
     /**
      * 清除最近的错误
+     * @since PHP7.0
      */
     public static function errorClearLast()
     {
@@ -71,9 +72,9 @@ class System
      *
      * 参数 `$destination` :
      *   它的含义描述于以上，由 message_type 参数所决定。
-     * @param string $message 应该被记录的错误信息。
-     * @param int $message_type 设置错误应该发送到何处0-4
-     * @param string $destination 目标
+     * @param string $message       应该被记录的错误信息。
+     * @param int    $message_type  设置错误应该发送到何处0-4
+     * @param string $destination   目标
      * @param string $extra_headers 额外的头。当 message_type 设置为 1 的时候使用
      * @return bool
      */
@@ -113,7 +114,7 @@ class System
     /**
      * 设置一个用户定义的错误处理函数
      * @param callable $error_handler 用户的函数
-     * @param int $error_types 指定错误类型
+     * @param int      $error_types   指定错误类型
      * @return mixed
      */
     public static function setErrorHandler(callable $error_handler, $error_types = 30719)
@@ -133,8 +134,8 @@ class System
 
     /**
      * 产生一个用户级别的 error/warning/notice 信息
-     * @param string $error_msg 该 error 的特定错误信息
-     * @param int $error_type 该 error 所特定的错误类型
+     * @param string $error_msg  该 error 的特定错误信息
+     * @param int    $error_type 该 error 所特定的错误类型
      * @return bool
      */
     public static function triggerError($error_msg, $error_type = 1024)
@@ -146,8 +147,8 @@ class System
      * 产生一个用户级别的 error/warning/notice 信息
      *
      * 是 triggerError() 方法的别名
-     * @param string $error_msg 该 error 的特定错误信息
-     * @param int $error_type 该 error 所特定的错误类型
+     * @param string $error_msg  该 error 的特定错误信息
+     * @param int    $error_type 该 error 所特定的错误类型
      * @return bool
      */
     public static function userError($error_msg, $error_type = 1024)

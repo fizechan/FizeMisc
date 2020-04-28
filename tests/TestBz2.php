@@ -4,7 +4,7 @@
 use fize\misc\Bz2;
 use PHPUnit\Framework\TestCase;
 
-class Bz2Test extends TestCase
+class TestBz2 extends TestCase
 {
 
     public function test__construct()

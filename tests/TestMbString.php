@@ -5,7 +5,7 @@ use fize\misc\MbString;
 use PHPUnit\Framework\TestCase;
 
 
-class MbStringTest extends TestCase
+class TestMbString extends TestCase
 {
 
     public function testCheckEncoding()

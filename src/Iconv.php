@@ -1,5 +1,4 @@
 <?php
-/** @noinspection PhpComposerExtensionStubsInspection */
 
 namespace fize\misc;
 
@@ -49,8 +48,8 @@ class Iconv
      * 参数 `$charset` :
      *   如果省略了，将使用 iconv.internal_encoding。
      * @param string $encoded_headers 编码过的头字符串。
-     * @param int $mode 决定了遇到畸形 MIME 头字段时的行为
-     * @param string $charset 指定编码
+     * @param int    $mode            决定了遇到畸形 MIME 头字段时的行为
+     * @param string $charset         指定编码
      * @return array
      */
     public static function mimeDecodeHeaders($encoded_headers, $mode = 0, $charset = null)
@@ -70,8 +69,8 @@ class Iconv
      *   如果省略了，将使用 iconv.internal_encoding。
      * 如果在解码过程中出现一个错误,将返回FALSE .
      * @param string $encoded_header 编码头,是一个字符串.
-     * @param int $mode 决定了遇到畸形 MIME 头字段时的行为
-     * @param string $charset 指定编码
+     * @param int    $mode           决定了遇到畸形 MIME 头字段时的行为
+     * @param string $charset        指定编码
      * @return string 如果解码成功,返回一个被解码的MIME字段,
      */
     public static function mimeDecode($encoded_header, $mode = 0, $charset = null)
@@ -84,9 +83,9 @@ class Iconv
 
     /**
      * 编码一个MIME头
-     * @param string $field_name 名
+     * @param string $field_name  名
      * @param string $field_value 值
-     * @param array $preferences 可选参数
+     * @param array  $preferences 可选参数
      * @return string 返回编码后的字符串
      */
     public static function mimeEncode($field_name, $field_value, array $preferences = null)
@@ -99,7 +98,7 @@ class Iconv
      *
      * 参数 `$type` :
      *   可选值：input_encoding、output_encoding、internal_encoding
-     * @param string $type 类型
+     * @param string $type    类型
      * @param string $charset 字符集。
      * @return bool 成功时返回 TRUE， 或者在失败时返回 FALSE。
      * @deprecated 自PHP5.6开始该方法已弃用
@@ -114,7 +113,7 @@ class Iconv
      *
      * 参数 `$charset` :
      *   如果省略了 charset 参数，假设 str 的编码为 iconv.internal_encoding。
-     * @param string $str 该字符串
+     * @param string $str     该字符串
      * @param string $charset 编码
      * @return int 返回 str 字符数的统计。
      */
@@ -132,9 +131,9 @@ class Iconv
      * 参数 `$charset` :
      *   如果省略了 charset 参数，假设 str 的编码为 iconv.internal_encoding。
      * @param string $haystack 要寻找的字符
-     * @param string $needle 被查找的字符串
-     * @param int $offset 偏移
-     * @param string $charset 编码
+     * @param string $needle   被查找的字符串
+     * @param int    $offset   偏移
+     * @param string $charset  编码
      * @return int
      */
     public static function strpos($haystack, $needle, $offset = 0, $charset = null)
@@ -151,8 +150,8 @@ class Iconv
      * 参数 `$charset` :
      *   如果省略了 charset 参数，假设 str 的编码为 iconv.internal_encoding。
      * @param string $haystack 要寻找的字符
-     * @param string $needle 被查找的字符串
-     * @param string $charset 编码
+     * @param string $needle   被查找的字符串
+     * @param string $charset  编码
      * @return int
      */
     public static function strrpos($haystack, $needle, $charset = null)
@@ -169,9 +168,9 @@ class Iconv
      * 参数 `$charset` :
      *   如果省略了 charset 参数，假设 str 的编码为 iconv.internal_encoding。
      * 如果 str 比 offset 字符数更短，将会返回 FALSE。 如果 str 是 offset 个字符的长度，将返回空字符串。
-     * @param string $str 原始字符串。
-     * @param int $offset 偏移
-     * @param int $length 指定长度
+     * @param string $str     原始字符串。
+     * @param int    $offset  偏移
+     * @param int    $length  指定长度
      * @param string $charset 编码
      * @return string 返回 offset 和 length 参数指定的 str 的部分。
      */
@@ -188,11 +187,11 @@ class Iconv
 
     /**
      * 将字符串 str 从 in_charset 转换编码到 out_charset。
-     * @deprecated 建议直接使用iconv原生函数
-     * @param string $in_charset 输入的字符集。
+     * @param string $in_charset  输入的字符集。
      * @param string $out_charset 输出的字符集。
-     * @param string $str 要转换的字符串。
+     * @param string $str         要转换的字符串。
      * @return string
+     * @deprecated 建议直接使用iconv原生函数
      */
     public static function iconv($in_charset, $out_charset, $str)
     {
@@ -204,7 +203,7 @@ class Iconv
      *
      * Windows、Linux系统针对中文字符创的兼容性处理
      * Windows由于使用GBK编码会导致中文路径乱码，进行UTF-8字符串转GBK字符串后再建立
-     * @param string $str 待处理字符串
+     * @param string $str       待处理字符串
      * @param string $direction 方向 WIN_UTF8_2_GBK,WIN_GBK_2_UTF8
      * @return string 处理后字符串
      * @deprecated PHP7中已对中文乱码进行了处理，该方法将废弃

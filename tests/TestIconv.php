@@ -5,7 +5,7 @@
 use fize\misc\Iconv;
 use PHPUnit\Framework\TestCase;
 
-class IconvTest extends TestCase
+class TestIconv extends TestCase
 {
     public function testGetEncoding()
     {

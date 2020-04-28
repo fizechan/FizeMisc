@@ -1,5 +1,4 @@
 <?php
-/** @noinspection PhpComposerExtensionStubsInspection */
 
 namespace fize\misc;
 
@@ -46,11 +45,11 @@ class Bz2
      */
     public function close()
     {
-        if(!$this->bz) {
+        if (!$this->bz) {
             return false;
         }
         $result = bzclose($this->bz);
-        if($result) {
+        if ($result) {
             $this->bz = null;
         }
         return $result;
@@ -63,9 +62,9 @@ class Bz2
      *   应该是一个 1-9 的数字。9 可以有最高的压缩比，但会使用更多的资源。
      * 参数 `$workfactor` :
      *   值可以是在 0 至 250 之间，0 是一个特殊的情况。
-     * @param string $source 待压缩的字符串。
-     * @param int $blocksize 指定压缩时使用的块大小
-     * @param int $workfactor 控制压缩阶段出现最坏的重复性高的情况下输入数据时的行为
+     * @param string $source     待压缩的字符串。
+     * @param int    $blocksize  指定压缩时使用的块大小
+     * @param int    $workfactor 控制压缩阶段出现最坏的重复性高的情况下输入数据时的行为
      * @return string 压缩后的字符串
      */
     public static function compress($source, $blocksize = 4, $workfactor = 0)
@@ -76,7 +75,7 @@ class Bz2
     /**
      * 解压经 bzip2 编码过的数据
      * @param string $source 编码过的数据
-     * @param int $small 是否使用一种内存开销更小的替代算法
+     * @param int    $small  是否使用一种内存开销更小的替代算法
      * @return string 解压后的字符串
      */
     public static function decompress($source, $small = 0)
@@ -169,8 +168,8 @@ class Bz2
      * 参数 `$length` :
      *   如果提供了参数 `$length` ，将仅仅写入 length（未压缩）个字节，
      *   若 data 小于该指定的长度则写入全部数据。
-     * @param string $data 要写入的数据
-     * @param int $length 写入字节长度
+     * @param string $data   要写入的数据
+     * @param int    $length 写入字节长度
      * @return int 返回写入的数据字节数
      */
     public function write($data, $length = null)

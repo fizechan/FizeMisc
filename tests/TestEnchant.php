@@ -6,10 +6,10 @@ use fize\misc\Enchant;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class EnchantTest
+ * Class TestEnchant
  * @todo 待测试
  */
-class EnchantTest extends TestCase
+class TestEnchant extends TestCase
 {
 
     public function testBrokerDescribe()
@@ -64,7 +64,7 @@ class EnchantTest extends TestCase
 
         $dict_path = $enchant->brokerGetDictPath(ENCHANT_MYSPELL);
         var_dump($dict_path);
-        
+
         self::assertNotEmpty($dict_path);
     }
 
