@@ -24,7 +24,7 @@ class Preg
      * @param mixed $subject     要进行搜索和替换的字符串或字符串数组。
      * @param int   $limit       每个模式在每个subject上进行替换的最大次数。默认是 -1(无限)。
      * @param int   $count       如果指定，将会被填充为完成的替换次数。
-     * @return mixed 如果subject是一个数组，返回一个数组， 其他情况返回一个字符串。
+     * @return string|string[]|null 如果subject是一个数组，返回一个数组， 其他情况返回一个字符串。
      */
     public static function filter($pattern, $replacement, $subject, $limit = -1, &$count = null)
     {
@@ -114,7 +114,7 @@ class Preg
      * @param mixed $subject                要搜索和替换字符串的字符串或数组。
      * @param int   $limit                  最大可能替换次数
      * @param int   $count                  返回被替换的次数
-     * @return mixed
+     * @return string|string[]|null
      */
     public static function replaceCallbackArray(array $patterns_and_callbacks, $subject, $limit = -1, &$count = null)
     {
@@ -131,7 +131,7 @@ class Preg
      * @param mixed          $subject  要搜索替换的目标字符串或字符串数组。
      * @param int            $limit    最大可替换次数
      * @param int            $count    如果指定，这个变量将被填充为替换执行的次数。
-     * @return mixed 如果subject是一个数组， preg_replace_callback()返回一个数组，其他情况返回字符串。 错误发生时返回 NULL。
+     * @return string|string[]|null 如果subject是一个数组， preg_replace_callback()返回一个数组，其他情况返回字符串。 错误发生时返回 NULL。
      */
     public static function replaceCallback($pattern, $callback, $subject, $limit = -1, &$count = null)
     {
@@ -153,7 +153,7 @@ class Preg
      * @param mixed $subject     要进行搜索和替换的字符串或字符串数组。
      * @param int   $limit       替换的最大次数
      * @param int   $count       如果指定，将会被填充为完成的替换次数。
-     * @return mixed 如果subject是一个数组， preg_replace()返回一个数组， 其他情况下返回一个字符串。
+     * @return string|string[]|null 如果subject是一个数组， preg_replace()返回一个数组， 其他情况下返回一个字符串。
      */
     public static function replace($pattern, $replacement, $subject, $limit = -1, &$count = null)
     {
