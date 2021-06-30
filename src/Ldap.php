@@ -10,5 +10,8 @@ namespace fize\misc;
 
 class Ldap
 {
-    //put your code here
+    public static function from8859Tot61($value)
+    {
+        return ldap_8859_to_t61($value);
+    }
 }

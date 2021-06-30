@@ -115,7 +115,7 @@ class System
      * 设置一个用户定义的错误处理函数
      * @param callable $error_handler 用户的函数
      * @param int      $error_types   指定错误类型
-     * @return mixed
+     * @return callable|null
      */
     public static function setErrorHandler(callable $error_handler, $error_types = 30719)
     {
@@ -125,7 +125,7 @@ class System
     /**
      * 设置一个用户定义的异常处理函数。
      * @param callable $exception_handler 用户的函数
-     * @return mixed
+     * @return callable|null
      */
     public static function set_exception_handler(callable $exception_handler)
     {
